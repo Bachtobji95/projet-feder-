@@ -2,6 +2,7 @@
 public class security {
 	
 	
+	
 public static boolean check(String addresse , patient[] tab) {
 		boolean flag = true;
 		for(int i=0;i<tab.length;i++) {
@@ -35,20 +36,32 @@ public static boolean check_mail(String mail) {
 
 
 
-public static boolean confirmpwd(String pwd , String oldpwd) {
+public static boolean confirmpwd(String pwd, String pwd2) {
 	boolean flag = false;
-	for(int i=0; i<pwd.length();i++) {
-		if(pwd.equals(oldpwd)) {
+	
+		if(pwd.equals(pwd2)) 
+		{
 			flag = true;
-			break;
-			
 		}
-			
-		
-	}
 	return flag;
 }
 	
 	
+public static void  changepwd(String pwd, String newpwd, docteur d) {
+
+	if(confirmpwd(pwd, d.password )) {
+		pwd = newpwd;
+		
+	}
+	else {System.out.println("confirmez votre mdp");}
+		
+		
+}
+	
+	
+	
+
 
 }
+
+
