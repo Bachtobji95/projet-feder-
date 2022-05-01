@@ -1,41 +1,33 @@
-import java.util.Scanner;
+import java.io.File;
 
 public class Base {
-	patient[] base = new patient[5]; // base de données des patients
-	 docteur[] base2 = new docteur[5]; // base de données des docteurs
-	 int i = 0;
+	static patient[] base = new patient[5]; // base de données des patients
+	 static docteur[] base2 = new docteur[5]; // base de données des docteurs
+	 static int i = 0;
 	
 
-void saisiepatient(String nom, String prenom, String date, String num_tel, String password, String email) {
-	
-	patient p = new patient(nom,prenom, date, num_tel, password, email);
-	if(security.check_mail(p.email)) 
-	{
-			if(security.confirmpwd(password, email)) 
-			{
-				base[i] = p;
-				i++;
+public	 void saisiepatient(String nom, String prenom, String date, String num_tel,  String email, File rapport) {
 			
-			}
-			else {System.out.println("confimez votre mdp");
-			}
-	}
-		
-	   
-	else {System.out.println("verfiez votre email");}
-	
-}
+		 patient p = new patient(nom,prenom,date,num_tel,email, rapport);
+			
+			base[i] = p;
+			
+			i++;
+					
+					
+			
+				}
 	
 	
 	
 	
 	/*----------------------------------------------------------------------------------*/
-void saisiemed(String nom, String prenom, String date, String num_tel, String password, String email) {
+public static void saisiemed(String nom, String prenom, String date, String num_tel, String password, String email, String password2) {
 	
-	docteur d = new docteur(nom,prenom, date, num_tel, password, email);
+	docteur d = new docteur(nom,prenom, date, num_tel, password, email, password2);
 	if(security.check_mail(d.email)) 
 	{
-			if(security.confirmpwd(password, email)) 
+			if(security.confirmpwd(password, password2 )) 
 			{
 				base2[i] = d;
 				i++;
@@ -60,7 +52,7 @@ void saisiemed(String nom, String prenom, String date, String num_tel, String pa
 
 	/*-------------------------------------------------------------------------------------*/
 	
-	boolean loginmed(String addresse, String pwd) 
+public	boolean loginmed(String addresse, String pwd) 
 	{
 		boolean logged = false;
 	 
@@ -93,37 +85,6 @@ void saisiemed(String nom, String prenom, String date, String num_tel, String pa
 	
 	/*----------------------------------------------------------------------------------*/
 	
-	
-	boolean loginpatient(String addresse, String pwd) 
-	{
-		boolean logged = false;
-	 
-		
-			for(int i=0;i<base.length;i++)
-		{
-				if(base[i].email.equals(addresse) ) 
-				{
-					for(int j =0; j<base2.length ;j++) 
-					{
-						if(base[j].password.equals(pwd))
-						{
-							logged = true;
-							break;
-						}
-						else
-						{ 
-							break;
-						}
-					
-					}
-			}
-				else {break;}
-					
-		
-		
-		} 
-			return logged;
-	}
 	
 	
 	
